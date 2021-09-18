@@ -115,8 +115,8 @@ CLASS("CivilWarCityData", "CivilWarLocationData")
 		if (_state == CITY_STATE_NEUTRAL) then {
 			// Neutral cities lose influence according to aggression
 			// At max aggression, decrease rate is 1.0 per 12 hours
-			pr _propagandaPerHour = _dt*_aggression/3600/12;
-			_influence = _influence - _propagandaPerHour;
+			// pr _propagandaPerHour = _dt*_aggression/3600/12;
+			// _influence = _influence - _propagandaPerHour;
 		} else {
 			// Captured city loses/gains influence at rate of 1 per 3 hours.
 			pr _influenceGain = _dt/3600/3;
