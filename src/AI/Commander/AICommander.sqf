@@ -686,7 +686,7 @@ CLASS("AICommander", "AI")
 
 			pr _enemyDB = GETV(_x, "intelDB");
 			// Select intel items of the classes we are interested in
-			pr _classes = ["IntelCommanderActionReinforce", "IntelCommanderActionBuild", "IntelCommanderActionAttack", "IntelCommanderActionRecon", "IntelCommanderActionSupply"];
+			pr _classes = ["IntelCommanderActionReinforce", "IntelCommanderActionBuild", /*"IntelCommanderActionAttack",*/ "IntelCommanderActionRecon", "IntelCommanderActionSupply"];
 			pr _potentialIntel = CALLM0(_enemyDB, "getAllIntel") select {
 				if (!CALLM1(_thisDB, "isIntelAddedFromSource", _x)) then { // We only care to steal it if we don't have it yet!
 					GET_OBJECT_CLASS(_x) in _classes; // Make sure the intel item is one of the interesting classes
