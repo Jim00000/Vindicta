@@ -586,7 +586,7 @@ CLASS("CivilWarGameMode", "GameModeBase")
 		// Add influence to nearby cities
 		if (_influence != 0) then {
 			if (_pos#0 != 0) then {
-				if (_side != ENEMY_SIDE) then { _influence = -_influence; };
+				if (_side != ENEMY_SIDE) then { _influence = 0; };
 				T_CALLM3("addInfluenceAtPos", _pos, 2500, _influence);
 			};
 		};
