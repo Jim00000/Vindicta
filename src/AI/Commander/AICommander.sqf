@@ -165,7 +165,7 @@ CLASS("AICommander", "AI")
 		pr _value = [
 			// High priority
 			[
-			"generateAttackActions"
+			// "generateAttackActions"
 			],
 			// Low priority
 			[
