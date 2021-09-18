@@ -1411,7 +1411,7 @@ switch _mode do {
                         case IDC_RSCDISPLAYARSENAL_TAB_BACKPACK:{removebackpack player;};
                     };
 
-                    [_object, _index, _oldItem] call jn_fnc_arsenal_addItem;
+                    [_object, _index, _oldItem, -1] call jn_fnc_arsenal_addItem;
 
                     if (_item != "") then{
                         switch _index do{
@@ -1450,7 +1450,7 @@ switch _mode do {
                                IDC_RSCDISPLAYARSENAL_TAB_CARGOTHROW,
                                IDC_RSCDISPLAYARSENAL_TAB_CARGOPUT
                             ])then{
-                                [_object, _indexItem, _x] call jn_fnc_arsenal_addItem;
+                                [_object, _indexItem, _x, -1] call jn_fnc_arsenal_addItem;
                             };
                         };
                     } foreach _items;
@@ -1469,7 +1469,7 @@ switch _mode do {
                             _container addMagazineAmmoCargo [_magazine,1,_count];
                         }else{
                             _indexItem = _magazine call jn_fnc_arsenal_itemType;
-                            [_object, _indexItem, _magazine, _count] call jn_fnc_arsenal_addItem;
+                            [_object, _indexItem, _magazine, -1] call jn_fnc_arsenal_addItem;
                         };
                     }forEach _magazines;
 
@@ -1481,7 +1481,7 @@ switch _mode do {
                 _oldItem = headgear player;
                 if (_oldItem != _item) then {
                     removeheadgear player;
-                    [_object, _index, _oldItem] call jn_fnc_arsenal_addItem;
+                    [_object, _index, _oldItem, -1] call jn_fnc_arsenal_addItem;
                     if (_item != "") then{
                         player addheadgear _item;
                         [_object, _index, _item]call jn_fnc_arsenal_removeItem;
@@ -1493,7 +1493,7 @@ switch _mode do {
                 _oldItem = goggles player;
                 if (_oldItem != _item) then {
                     removeGoggles player;
-                    [_object, _index, _oldItem] call jn_fnc_arsenal_addItem;
+                    [_object, _index, _oldItem, -1] call jn_fnc_arsenal_addItem;
                     if (_item != "") then{
                         player addGoggles _item;
                         [_object, _index, _item]call jn_fnc_arsenal_removeItem;
@@ -1504,7 +1504,7 @@ switch _mode do {
                 _oldItem = hmd player;
                 if (_oldItem != _item) then {
                     player removeweapon _oldItem;
-                    [_object, _index, _oldItem] call jn_fnc_arsenal_addItem;
+                    [_object, _index, _oldItem, -1] call jn_fnc_arsenal_addItem;
                     if (_item != "") then{
                         player addweapon _item;
                         [_object, _index, _item]call jn_fnc_arsenal_removeItem;
@@ -1515,7 +1515,7 @@ switch _mode do {
                 _oldItem = binocular player;
                 if (_oldItem != _item) then {
                     player removeweapon _oldItem;
-                    [_object, _index,_oldItem] call jn_fnc_arsenal_addItem;
+                    [_object, _index,_oldItem, -1] call jn_fnc_arsenal_addItem;
                     if (_item != "") then{
                         player addweapon _item;
                         _magazines = getarray (configfile >> "cfgweapons" >> _item >> "magazines");
@@ -1563,7 +1563,7 @@ switch _mode do {
 
                     //remove weapon
                     player removeweapon _oldItem;
-                    [_object, _index, _oldItem] call jn_fnc_arsenal_addItem;
+                    [_object, _index, _oldItem, -1] call jn_fnc_arsenal_addItem;
 
                     //add new weapon
                     if ((_item != "") && (_amount > 0 || _amount == -1)) then { // Added (_amount > 0) to prevent duplication of ace launchers
@@ -1621,7 +1621,7 @@ switch _mode do {
                         _amount = _x select 1;
                         _indexItem = _magazine call jn_fnc_arsenal_itemType;
 
-                        [_object, _indexItem, _magazine, _amount] call jn_fnc_arsenal_addItem;//TODO
+                        [_object, _indexItem, _magazine, -1] call jn_fnc_arsenal_addItem;//TODO
                     }forEach(_oldMagazines - magazinesAmmoFull player);
 
                     _newAttachments = switch _index do {
@@ -1643,7 +1643,7 @@ switch _mode do {
                             case "AccessoryBipod": {IDC_RSCDISPLAYARSENAL_TAB_ITEMBIPOD};
                             default {-1};
                         };
-                        if(_idcList != -1)then{[_object, _idcList, _x] call jn_fnc_arsenal_addItem};
+                        if(_idcList != -1)then{[_object, _idcList, _x, -1] call jn_fnc_arsenal_addItem};
                     }foreach _oldAttachments - _newAttachments;
                     {
                         private["_idcList","_type"];
@@ -1685,7 +1685,7 @@ switch _mode do {
                 if (_oldItem != _item) then {
                     player unassignitem _OldItemUnequal;
                     player removeitem _OldItemUnequal;
-                    [_object, _index, _oldItem] call jn_fnc_arsenal_addItem;
+                    [_object, _index, _oldItem, -1] call jn_fnc_arsenal_addItem;
                     if (_item != "") then {
                         player linkitem _item;
                         [_object, _index, _item]call jn_fnc_arsenal_removeItem;
@@ -1723,7 +1723,7 @@ switch _mode do {
                         _oldItem = (primaryWeaponItems player select _accIndex);
                         if (_oldItem != _item) then {
                             player removeprimaryweaponitem _oldItem;
-                            [_object, _index, _oldItem] call jn_fnc_arsenal_addItem;
+                            [_object, _index, _oldItem, -1] call jn_fnc_arsenal_addItem;
                             if (_item != "") then {
                                 player addprimaryweaponitem _item;
                                 [_object, _index, _item]call jn_fnc_arsenal_removeItem;
@@ -1734,7 +1734,7 @@ switch _mode do {
                         _oldItem = (secondaryWeaponItems player select _accIndex);
                         if (_oldItem != _item) then {
                             player removesecondaryweaponitem _oldItem;
-                            [_object, _index, _oldItem] call jn_fnc_arsenal_addItem;
+                            [_object, _index, _oldItem, -1] call jn_fnc_arsenal_addItem;
                             if (_item != "") then {
                                 player addsecondaryweaponitem _item;
                                 [_object, _index, _item]call jn_fnc_arsenal_removeItem;
@@ -1745,7 +1745,7 @@ switch _mode do {
                         _oldItem = (handgunitems player select _accIndex);
                         if (_oldItem != _item) then {
                             player removehandgunitem _oldItem;
-                            [_object, _index, _oldItem] call jn_fnc_arsenal_addItem;
+                            [_object, _index, _oldItem, -1] call jn_fnc_arsenal_addItem;
                             if (_item != "") then {
                                 player addhandgunitem _item;
                                 [_object, _index, _item]call jn_fnc_arsenal_removeItem;
@@ -1951,7 +1951,7 @@ switch _mode do {
                 [_object, _index, _item, _count]call jn_fnc_arsenal_removeItem;
             }else{
                 _ctrlList lnbsettext [[_lbcursel,2],str (_amountOld - _count)];
-                [_object, _index, _item, _count] call jn_fnc_arsenal_addItem;
+                [_object, _index, _item, -1] call jn_fnc_arsenal_addItem;
             };
 
         };

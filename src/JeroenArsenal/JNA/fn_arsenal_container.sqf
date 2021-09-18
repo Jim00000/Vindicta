@@ -682,7 +682,7 @@ switch _mode do {
 					_mass = ["getMassItem",[_item,_count,_index]] call jn_fnc_arsenal_container;
 					jnva_loadout_mass = jnva_loadout_mass - _mass;
 					//[_index, _item, _count] remoteExecCall ["jn_fnc_arsenal_addItem"];
-					[_object, _index, _item, _count] call jn_fnc_arsenal_addItem; //Sparker: why execute it on all clients?
+					[_object, _index, _item, -1] call jn_fnc_arsenal_addItem; //Sparker: why execute it on all clients?
 				};
 			};
 		};
