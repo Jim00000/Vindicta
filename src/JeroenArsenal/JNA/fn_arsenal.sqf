@@ -923,7 +923,7 @@ switch _mode do {
         //update datalist
         if(!isnil "_object")then{
 			pr _dataList = _object getVariable "jna_dataList";
-            _dataList set [_index, [_dataList select _index, [_item, _amount]] call jn_fnc_common_array_add];
+            _dataList set [_index, [_dataList select _index, [_item, -1]] call jn_fnc_common_array_add];
         };
 		
         pr _display =  uiNamespace getVariable ["arsanalDisplay","No display"];
