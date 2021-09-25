@@ -1759,7 +1759,7 @@ http://patorjk.com/software/taag/#p=display&f=Univers&t=ACTIONS
 
 		ASSERT_THREAD(_thisObject); // Respect my threading!
 
-		T_CALLM4("_clientCreateGarrisonAction", _garRef, _targetType, _target, "DirectAttackCmdrAction");
+		//T_CALLM4("_clientCreateGarrisonAction", _garRef, _targetType, _target, "DirectAttackCmdrAction");
 	ENDMETHOD;
 
 	// Thread unsafe, private

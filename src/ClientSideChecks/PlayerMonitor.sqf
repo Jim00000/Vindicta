@@ -296,7 +296,7 @@ CLASS("PlayerMonitor", "MessageReceiverEx") ;
 
 		pr _remindableActions = [
 			"IntelCommanderActionReinforce",
-			"IntelCommanderActionAttack",
+			//"IntelCommanderActionAttack",
 			"IntelCommanderActionRecon",
 			"IntelCommanderActionBuild",
 			"IntelCommanderActionPatrol"
